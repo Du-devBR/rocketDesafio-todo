@@ -1,9 +1,12 @@
+import { Header } from "./components/header/Header";
+import { Home } from "./pages/Home/Home";
 
 export function App() {
 
   return (
     <>
-      <h1>hello word</h1>
+      <Header />
+      <Home />
     </>
   )
 }

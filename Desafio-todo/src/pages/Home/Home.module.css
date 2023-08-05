@@ -1,0 +1,52 @@
+.containerHome {
+  display: flex;
+  max-width: 736px;
+  margin:  0 auto;
+}
+
+.containerHome .form {
+  display: flex;
+  width: 100%;
+  margin-top: calc(0px - 1.5rem - 6px);
+  gap: 0.5rem;
+}
+
+.form .inputTask {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(---gray--500);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 140%;
+  color: var(---gray--100);
+
+}
+
+.form .inputTask::placeholder {
+  color: var(---gray--300);
+}
+
+.form .inputTask:focus {
+  outline: none;
+  box-shadow: 0 0 2px var(---blue-dark);
+}
+
+.form .btnSubmit {
+  padding: 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  background: var(---blue-dark);
+  color: var(---gray--100);
+  font-size: 0.875rem;
+  font-weight: 700;
+  line-height: 140%;
+  transition: 0.5s;
+  cursor: pointer;
+}
+
+.btnSubmit:hover{
+  background: var(---purple-dark);
+  transition: 0.5s;
+}
