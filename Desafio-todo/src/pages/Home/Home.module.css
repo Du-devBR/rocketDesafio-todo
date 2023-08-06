@@ -1,5 +1,6 @@
 .containerHome {
   display: flex;
+  flex-direction: column;
   max-width: 736px;
   margin:  0 auto;
 }
@@ -49,4 +50,41 @@
 .btnSubmit:hover{
   background: var(---purple-dark);
   transition: 0.5s;
+}
+
+.containerHome .containerTasks {
+  margin-top: 4rem;
+}
+
+.containerTasks .headerTasks {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.containerTasks .createTasks, .completedTasks {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.completedTasks span, .createTasks span{
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: var(---gray--200);
+  background: var(---gray--400);
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+
+}
+
+.createTasks strong {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(---blue);
+}
+
+.completedTasks strong {
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(---purple);
 }

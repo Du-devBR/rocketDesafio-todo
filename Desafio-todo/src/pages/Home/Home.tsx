@@ -16,6 +16,18 @@ export function Home(){
             Criar
         </button>
       </form>
+      <section className={style.containerTasks}>
+        <header className={style.headerTasks}>
+          <div className={style.createTasks}>
+            <strong>Tarefas criadas</strong>
+            <span>0</span>
+          </div>
+          <div className={style.completedTasks}>
+            <strong>Concluidas</strong>
+            <span>0</span>
+          </div>
+        </header>
+      </section>
     </div>
   )
 }
