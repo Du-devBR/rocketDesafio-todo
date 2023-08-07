@@ -62,8 +62,7 @@ export function Home(){
 
   function handleCompletedTasks(taskIndex: number){
     const completedTask = tasks[taskIndex]
-    const uptadateTaskByindex = tasks.filter((task : string, index: number) => index !== taskIndex)
-
+    const uptadateTaskByindex = tasks.filter((_task : string, index: number) => index !== taskIndex)
     setTasks(uptadateTaskByindex);
     setTasksCompleted([...tasksCompleted, completedTask]);
     setCountTaskCompleted(tasksCompleted.length + 1)
