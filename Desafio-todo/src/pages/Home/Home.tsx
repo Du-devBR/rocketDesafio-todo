@@ -4,6 +4,7 @@ import {TasksCreate } from '../../components/tasks/TasksCreate'
 
 export interface ITasks {
   comment: string
+  onDelete?: () => void
 }
 
 export function Home(){
@@ -14,6 +15,7 @@ export function Home(){
   const [countTask, setCountTask] = useState(0)
   const [errorInput, setErrorInput] = useState(false)
   const [tasks, setTasks] = useState<any>([])
+  const [tasksCompleted, setTasksCompleted] = useState<any>([])
 
   function handleRegisterNewTask(event: React.FormEvent<HTMLFormElement>){
     event.preventDefault()
@@ -27,7 +29,15 @@ export function Home(){
    }
   }
 
-  // console.log(tasks)
+  function handleDeletTask(taskDelete: string){
+    const taskWithoutDelete = tasks.filter((task : string) => {
+      return task !== taskDelete
+    })
+
+    setTasks(taskWithoutDelete)
+    setCountTask(tasks.length - 1)
+  }
+
   return(
     <div className={style.containerHome}>
       <form className={style.form} onSubmit={handleRegisterNewTask}>
@@ -65,6 +75,7 @@ export function Home(){
                   <TasksCreate
                     key={index}
                     comment={task}
+                    onDelete={() => handleDeletTask(task)}
                   />
                 </li>
               ))
