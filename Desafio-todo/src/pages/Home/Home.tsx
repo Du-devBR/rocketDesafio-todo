@@ -1,6 +1,8 @@
 import { useState } from 'react'
+import fileFull from '../../assets/img/fileFull.png'
 import style from './Home.module.css'
 import {TasksCreate } from '../../components/tasks/TasksCreate'
+import { TasksCompleted } from '../../components/tasks/TasksCompleted'
 
 export interface ITasks {
   comment: string,
@@ -14,6 +16,7 @@ export function Home(){
     comment: ""
   })
   const [countTask, setCountTask] = useState(0)
+  const [countTaskCompleted, setCountTaskCompleted] = useState(0)
   const [errorInput, setErrorInput] = useState(false)
   const [tasks, setTasks] = useState<any>([])
   const [tasksCompleted, setTasksCompleted] = useState<any>([])
@@ -25,7 +28,7 @@ export function Home(){
     event.preventDefault()
    if(textTasks.comment.length >= 1){
     setTasks([...tasks, textTasks.comment])
-    setCountTask(tasks.length + 1)
+    setCountTask(countTask + 1)
     setTextTasks({comment: ""})
     setErrorInput(false)
    }else{
@@ -33,21 +36,31 @@ export function Home(){
    }
   }
 
-  function handleDeletTask(taskDelete: string){
+  function handleDeleteTaskCreate(taskDelete: string){
     const taskWithoutDelete = tasks.filter((task : string) => {
       return task !== taskDelete
     })
 
     setTasks(taskWithoutDelete)
-    setCountTask(tasks.length - 1)
+    setCountTask(countTask - 1)
+  }
+
+  function handleDeleteTaskCompleted(taskDelete: string){
+    const tasksWhitoutDeleteCompleted = tasksCompleted.filter((task : string) => {
+      return task !== taskDelete
+    })
+    setTasksCompleted(tasksWhitoutDeleteCompleted)
+    setCountTask(countTask - 1)
+    setCountTaskCompleted(countTaskCompleted - 1)
   }
 
   function handleCompletedTasks(taskIndex: number){
     const completedTask = tasks[taskIndex]
-    const uptadateTaskByindex = tasks.filter((task: string, index: number) => index !== taskIndex)
+    const uptadateTaskByindex = tasks.filter((task : string, index: number) => index !== taskIndex)
 
     setTasks(uptadateTaskByindex);
     setTasksCompleted([...tasksCompleted, completedTask]);
+    setCountTaskCompleted(tasksCompleted.length + 1)
   }
 
   return(
@@ -76,25 +89,49 @@ export function Home(){
           </div>
           <div className={style.completedTasks}>
             <strong>Concluidas</strong>
-            <span>0</span>
+            <span>{countTaskCompleted} de {countTask}</span>
           </div>
         </header>
-        <div className={style.listTaksCreate}>
-          <ul>
-            {
-              tasks.map((task: string, index: number) => (
-                <li>
-                  <TasksCreate
-                    key={index}
-                    comment={task}
-                    onDelete={() => handleDeletTask(task)}
-                    onCompleted={()  => handleCompletedTasks(index)}
-                  />
-                </li>
-              ))
-            }
-          </ul>
-        </div>
+        {
+          tasks.length || tasksCompleted.length ? (
+            <div className={style.listTaksCreate}>
+            <ul>
+              {
+                tasks.map((task: string, index: number) => (
+                  <li>
+                    <TasksCreate
+                      key={index}
+                      comment={task}
+                      onDelete={() => handleDeleteTaskCreate(task)}
+                      onCompleted={()  => handleCompletedTasks(index)}
+                    />
+                  </li>
+                ))
+              }
+            </ul>
+            <ul>
+              {
+                tasksCompleted.map((taskCompleted: string, index: number) => (
+                  <li>
+                    <TasksCompleted
+                      key={index}
+                      comment={taskCompleted}
+                      onDelete={() => handleDeleteTaskCompleted(taskCompleted)}
+                    />
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+          ): (
+            <div>
+              <img src={fileFull} alt="" />
+              <strong>Você ainda não tem tarefas cadastradas</strong>
+              <p>Crie tarefas e organize seus itens a fazer</p>
+            </div>
+          )
+        }
+
       </section>
     </div>
   )

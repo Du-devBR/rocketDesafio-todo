@@ -16,14 +16,13 @@
 
 .cardTask p {
   width: 100%;
-  color: var(---gray--100);
+  color: var(---gray--300);
   font-size: 0.875rem;
   line-height: 140%;
+  text-decoration: line-through;
 }
-
 
 .cardTask:hover {
   box-shadow: 1px 1px 5px  var(---purple);
   transition: 0.5s;
-
 }

@@ -6,8 +6,6 @@ import {BsCircle, BsTrash} from 'react-icons/bs'
 
 export function TasksCreate({comment, onDelete, onCompleted} : ITasks){
 
-
-  // console.log(onDelete)
   return(
     <div className={style.cardTask}>
       <button onClick={onCompleted}>
