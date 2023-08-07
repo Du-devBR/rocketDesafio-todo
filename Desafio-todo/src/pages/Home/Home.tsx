@@ -3,6 +3,9 @@ import fileFull from '../../assets/img/fileFull.png'
 import style from './Home.module.css'
 import {TasksCreate } from '../../components/tasks/TasksCreate'
 import { TasksCompleted } from '../../components/tasks/TasksCompleted'
+import {ToastContainer, toast} from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
+
 
 export interface ITasks {
   comment: string,
@@ -31,6 +34,7 @@ export function Home(){
     setCountTask(countTask + 1)
     setTextTasks({comment: ""})
     setErrorInput(false)
+    toast.success("Tarefa criada")
    }else{
     setErrorInput(true)
    }
@@ -43,6 +47,7 @@ export function Home(){
 
     setTasks(taskWithoutDelete)
     setCountTask(countTask - 1)
+    toast.success("Tarefa excluida com sucesso")
   }
 
   function handleDeleteTaskCompleted(taskDelete: string){
@@ -52,6 +57,7 @@ export function Home(){
     setTasksCompleted(tasksWhitoutDeleteCompleted)
     setCountTask(countTask - 1)
     setCountTaskCompleted(countTaskCompleted - 1)
+    toast.success("Tarefa excluida com sucesso")
   }
 
   function handleCompletedTasks(taskIndex: number){
@@ -61,10 +67,12 @@ export function Home(){
     setTasks(uptadateTaskByindex);
     setTasksCompleted([...tasksCompleted, completedTask]);
     setCountTaskCompleted(tasksCompleted.length + 1)
+    toast.info("Tarefa concluida!!!")
   }
 
   return(
     <div className={style.containerHome}>
+      <ToastContainer autoClose={500} />
       <form className={style.form} onSubmit={handleRegisterNewTask}>
         <input
           className={errorInput ? style.inputTaskError : style.inputTask}
@@ -79,6 +87,7 @@ export function Home(){
           className={style.btnSubmit}
           >
             Criar
+            <span className={style.plusIcon}>+</span>
         </button>
       </form>
       <section className={style.containerTasks}>
@@ -124,7 +133,7 @@ export function Home(){
             </ul>
           </div>
           ): (
-            <div>
+            <div className={style.emptyTasks}>
               <img src={fileFull} alt="" />
               <strong>Você ainda não tem tarefas cadastradas</strong>
               <p>Crie tarefas e organize seus itens a fazer</p>
