@@ -12,12 +12,19 @@ export function Home(){
     comment: ""
   })
   const [countTask, setCountTask] = useState(0)
+  const [errorInput, setErrorInput] = useState(false)
   const [tasks, setTasks] = useState<any>([])
 
   function handleRegisterNewTask(event: React.FormEvent<HTMLFormElement>){
     event.preventDefault()
+   if(textTasks.comment.length >= 1){
     setTasks([...tasks, textTasks.comment])
     setCountTask(tasks.length + 1)
+    setTextTasks({comment: ""})
+    setErrorInput(false)
+   }else{
+    setErrorInput(true)
+   }
   }
 
   // console.log(tasks)
@@ -25,10 +32,12 @@ export function Home(){
     <div className={style.containerHome}>
       <form className={style.form} onSubmit={handleRegisterNewTask}>
         <input
-          className={style.inputTask}
+          className={errorInput ? style.inputTaskError : style.inputTask}
           type="text"
+          value={textTasks.comment}
           onChange={(event) => setTextTasks({...textTasks, comment: event.target.value})}
-          placeholder='Adicione uma nova tarefa'
+          onKeyDown={() => setErrorInput(false)}
+          placeholder={errorInput ? "Precisa preenchar a tarefa para enviar" : 'Adicione uma nova tarefa'}
         />
         <button
           type="submit"

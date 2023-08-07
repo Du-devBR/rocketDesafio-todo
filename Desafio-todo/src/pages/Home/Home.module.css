@@ -25,6 +25,20 @@
 
 }
 
+.form .inputTaskError {
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  border: none;
+  background: var(---gray--500);
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 140%;
+  color: var(---gray--100);
+  box-shadow: 0px 0px 4px var(---danger);
+
+}
+
 .form .inputTask::placeholder {
   color: var(---gray--300);
 }
