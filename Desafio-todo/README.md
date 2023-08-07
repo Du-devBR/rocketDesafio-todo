@@ -1,27 +1,47 @@
-# React + TypeScript + Vite
+# ToDo list
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é uma aplicação todo list, para organaniar tarefas de forma simples.
+ <img src="./src/assets/img/todo.gif" width="800" title="hover text">
+## Sobre o Projeto
 
-Currently, two official plugins are available:
+O projeto é uma aplicação no estilo lista de tarefas (to-do list), desenvolvida para web e responsiva em todos os dispositivos. Foi criado utilizando React + TypeScript, empregando métodos de imutabilidade e estados do React para dar vida a uma aplicação limpa e com estilo.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Desenvolvedor(Github)
 
-## Expanding the ESLint configuration
+- [Eduardo Ananias](https://github.com/Du-devBR)
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+## Funcionalidades
 
-- Configure the top-level `parserOptions` property like this:
+- Adicionar uma nova tarefa
+- Marcar e desmarcar uma tarefa como concluída
+- Remover uma tarefa da listagem
+- Mostrar o progresso de conclusão das tarefas
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+## Como Executar o Projeto
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+### Pré-requisitos
+
+- Gerenciador de pacotes, exemplo: npm, yarn
+
+### Passos
+
+1. Clone este repositório em sua máquina local.
+
+   ```bash
+   git clone https://github.com/Du-devBR/rocketDesafio-todo.git
+2. Navegue até o diretório do projeto.
+    ```bash
+    cd .\Desafio-todo\
+3. Instale as dependências do projeto.
+    ```bash
+    npm install ou yarn install
+4. Inicie o servidor de desenvolvimento.
+    ```bash
+    npm run dev
+    yarn init
+5. Abra seu navegador e acesse:
+    ```bash
+    http://localhost:5173
+
+### Contribuição
+Se você deseja contribuir com o projeto, sinta-se à vontade para abrir um pull request. Será um prazer receber suas contribuições!
