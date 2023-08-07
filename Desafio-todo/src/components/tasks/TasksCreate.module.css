@@ -1,0 +1,28 @@
+.cardTask {
+  display: flex;
+  gap: 1rem;
+  background: var(---gray--500);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  align-items: center;
+  transition: 0.5s;
+}
+
+.cardTask button {
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.cardTask p {
+  width: 100%;
+  color: var(---gray--100);
+  font-size: 0.875rem;
+  line-height: 140%;
+}
+
+
+.cardTask:hover {
+  box-shadow: 1px 1px 5px  var(---purple);
+  transition: 0.5s;
+}
