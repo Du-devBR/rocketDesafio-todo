@@ -3,8 +3,9 @@ import style from './Home.module.css'
 import {TasksCreate } from '../../components/tasks/TasksCreate'
 
 export interface ITasks {
-  comment: string
-  onDelete?: () => void
+  comment: string,
+  onDelete?: () => void,
+  onCompleted?: () => void,
 }
 
 export function Home(){
@@ -16,6 +17,9 @@ export function Home(){
   const [errorInput, setErrorInput] = useState(false)
   const [tasks, setTasks] = useState<any>([])
   const [tasksCompleted, setTasksCompleted] = useState<any>([])
+
+  console.log("completas: " + tasksCompleted)
+  console.log("criadas: " + tasks)
 
   function handleRegisterNewTask(event: React.FormEvent<HTMLFormElement>){
     event.preventDefault()
@@ -36,6 +40,14 @@ export function Home(){
 
     setTasks(taskWithoutDelete)
     setCountTask(tasks.length - 1)
+  }
+
+  function handleCompletedTasks(taskIndex: number){
+    const completedTask = tasks[taskIndex]
+    const uptadateTaskByindex = tasks.filter((task: string, index: number) => index !== taskIndex)
+
+    setTasks(uptadateTaskByindex);
+    setTasksCompleted([...tasksCompleted, completedTask]);
   }
 
   return(
@@ -76,6 +88,7 @@ export function Home(){
                     key={index}
                     comment={task}
                     onDelete={() => handleDeletTask(task)}
+                    onCompleted={()  => handleCompletedTasks(index)}
                   />
                 </li>
               ))

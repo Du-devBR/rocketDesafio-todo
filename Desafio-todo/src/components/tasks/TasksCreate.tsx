@@ -4,13 +4,13 @@ import style from './TasksCreate.module.css'
 import {BsCircle, BsTrash} from 'react-icons/bs'
 
 
-export function TasksCreate({comment, onDelete} : ITasks){
+export function TasksCreate({comment, onDelete, onCompleted} : ITasks){
 
 
-  console.log(onDelete)
+  // console.log(onDelete)
   return(
     <div className={style.cardTask}>
-      <button>
+      <button onClick={onCompleted}>
         <BsCircle style={{fontSize:"1.25rem", color: "var(---blue)"}} />
       </button>
       <p>{comment}</p>
